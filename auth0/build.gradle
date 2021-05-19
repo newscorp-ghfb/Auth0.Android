@@ -23,30 +23,12 @@
  */
 
 plugins {
+    id 'com.android.library'
     id 'kotlin-android'
-    id "com.auth0.gradle.oss-library.android" version "0.15.1"
     id "org.jetbrains.dokka" version "1.4.20"
 }
 
 logger.lifecycle("Using version ${version} for ${name}")
-
-oss {
-    name 'Auth0.Android'
-    repository 'Auth0.Android'
-    organization 'auth0'
-    description 'Android toolkit for Auth0 API'
-
-    developers {
-        auth0 {
-            displayName = 'Auth0'
-            email = 'oss@auth0.com'
-        }
-        lbalmaceda {
-            displayName = 'Luciano Balmaceda'
-            email = 'luciano.balmaceda@auth0.com'
-        }
-    }
-}
 
 android {
     compileSdkVersion 30
@@ -91,13 +73,6 @@ android {
 ext {
     okhttpVersion = '4.9.0'
     powermockVersion = '2.0.9'
-}
-
-// Configure javadoc jar to use dokka output
-// TODO update oss-plugin to use dokka instead of doing it here
-javadocJar {
-    dependsOn "dokkaJavadoc"
-    from "$buildDir/dokka/javadoc"
 }
 
 dependencies {
